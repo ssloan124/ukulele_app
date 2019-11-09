@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ukuleleapp:
+    build: .
+    ports:
+      - "80:3838"
+      - "8787:8787"
+    volumes:
+      - './mountpoints/apps:/home/rstudio/uke/apps'
+      - './shinylogs/:/var/log/shiny-server'
+      - './mountpoints/apps:/srv/shiny-server'
+    environment:
+      - "PASSWORD=whatevs"  
