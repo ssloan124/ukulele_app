@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "testakscluster"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "testakscluster"
+    spec:
+      containers:
+        - name: "testakscluster"
+          image: "shinysls.azurecr.io/testakscluster"
+          ports:
+          - containerPort: 80
