@@ -2,9 +2,9 @@ library(shiny)
 library(lubridate)
 library(reticulate)
 library(tidyverse)
-library(imager)
+#library(imager)
 #import("music")
-load("c:/users/samantha/documents/repos/ukulele_app/mountpoints/apps/strums.RData")
+#load("c:/users/samantha/documents/repos/ukulele_app/mountpoints/apps/strums.RData")
 
 exercises <- c("chord changes", "fingerpicking", "strumming", "songs")
 
@@ -13,7 +13,7 @@ server <- function(input, output, session) {
   active <- reactiveVal(FALSE)
   timer <- reactiveVal(300)
   i <- reactiveVal(1)
-  strumnum <- reactiveVal(sample(1:32, 1))
+#  strumnum <- reactiveVal(sample(1:32, 1))
   
   output$timeleft <- renderText({
     paste("Time left: ", seconds_to_period(timer()))
@@ -24,9 +24,9 @@ server <- function(input, output, session) {
     
   })
   
-  output$strum <- renderPlot({
-    plot(im[[strumnum()]], axes = FALSE, rescale = FALSE)
-  })
+#  output$strum <- renderPlot({
+#    plot(im[[strumnum()]], axes = FALSE, rescale = FALSE)
+#  })
   
   observe({
     invalidateLater(1000, session)

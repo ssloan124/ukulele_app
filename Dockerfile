@@ -1,8 +1,12 @@
 FROM rocker/tidyverse
 
+RUN apt-get install -y --fix-missing libfftw3-dev libx11-dev libtiff-dev
+
 RUN install2.r --error \
     lubridate \
     reticulate 
+#\
+#    imager
 
 RUN export ADD=shiny && bash /etc/cont-init.d/add
 
