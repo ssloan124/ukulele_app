@@ -2,6 +2,9 @@ library(shiny)
 library(lubridate)
 library(reticulate)
 library(tidyverse)
+use_python("/usr/bin/python3")
+#music <- import('music')
+#m <- music$Metronome()
 #library(imager)
 #import("music")
 #load("c:/users/samantha/documents/repos/ukulele_app/mountpoints/apps/strums.RData")
@@ -13,6 +16,7 @@ server <- function(input, output, session) {
   active <- reactiveVal(FALSE)
   timer <- reactiveVal(300)
   i <- reactiveVal(1)
+  metro <- reactiveVal(FALSE)
 #  strumnum <- reactiveVal(sample(1:32, 1))
   
   output$timeleft <- renderText({
@@ -53,6 +57,11 @@ server <- function(input, output, session) {
         }
       }
     })
+    #if(metro()) {
+    #  m.start
+    #} else{
+    #  m.stop
+    #  }
   })
   
   # observers for actionbuttons
@@ -69,4 +78,5 @@ server <- function(input, output, session) {
     i(1)
   })
   observeEvent(input$newpattern, {strumnum(sample(1:32, 1))})
+  #observeEvent(input$metrostart, {m.start()})
 }

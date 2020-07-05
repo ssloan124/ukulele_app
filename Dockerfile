@@ -1,38 +1,31 @@
 FROM rocker/tidyverse
 
-RUN apt-get install -y --fix-missing libfftw3-dev libx11-dev libtiff-dev
+RUN apt-get update && apt-get upgrade -y
+
+COPY ./mountpoints/apps/. /srv/shiny-server
 
 RUN install2.r --error \
     lubridate \
-    reticulate 
-#\
-#    imager
+    reticulate
 
 RUN export ADD=shiny && bash /etc/cont-init.d/add
 
+# install python3, virtualenv and anaconda
 
+RUN apt-get update && apt-get install -y \
+        python3 \
+        python3-dev \
+		python3-pip \
+	&& pip3 install virtualenv
 
-#RUN apt-get update --fix-missing \
-#	&& apt-get install -y \
-#		ca-certificates \
-#   	        libglib2.0-0 \
-#	 	libxext6 \
-#	   	libsm6  \
-#	   	libxrender1 \
-#		libxml2-dev
+# install anaconda
 
-#RUN apt-get update -y && \
-#    apt-get install -y --no-install-recommends \
-#            python3-dev \
-#            python3-pip \
-#            python3-tk \
-#            python3-setuptools \
-#            python3-wheel && \
-#    apt-get clean && \
-#    rm -rf /var/lib/apt/lists/*
+RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
+    wget --quiet https://repo.continuum.io/archive/Anaconda2-4.3.1-Linux-x86_64.sh -O ~/anaconda.sh && \
+    /bin/bash ~/anaconda.sh -b -p /opt/conda && \
+    rm ~/anaconda.sh
 
-#RUN pip3 install music
-
+ENV PATH /opt/conda/bin:$PATH
 
 
 

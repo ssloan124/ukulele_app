@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uke
+spec:
+  type: LoadBalancer
+  selector:
+    app: uke
+  ports:
+    - protocol: TCP
+      port: 3838
+status:
+  loadBalancer:
+    ingress:
+    - ip: 2600:1700:b9f0:8c90:4c37:b89d:43fa:e69e
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uke
+  labels:
+    app: uke
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: uke
+  template:
+    metadata:
+      labels:
+        app: uke
+    spec:
+      containers:
+      - name: uke
+        image: slsacr.azurecr.io/uke
+        ports:
+        - containerPort: 3838
+        env:
+        - name: PASSWORD
+          value: "genericpassword"
