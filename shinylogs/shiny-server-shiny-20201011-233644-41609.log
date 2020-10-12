@@ -1,0 +1,41 @@
+su: ignoring --preserve-environment, it's mutually exclusive with --login
+
+Listening on http://127.0.0.1:41609
+
+Attaching package: ‘lubridate’
+
+The following objects are masked from ‘package:base’:
+
+    date, intersect, setdiff, union
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: magrittr
+
+Attaching package: ‘imager’
+
+The following object is masked from ‘package:magrittr’:
+
+    add
+
+The following objects are masked from ‘package:stats’:
+
+    convolve, spectrum
+
+The following object is masked from ‘package:graphics’:
+
+    frame
+
+The following object is masked from ‘package:base’:
+
+    save.image
+

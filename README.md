@@ -10,7 +10,9 @@ Create an app that cycles through practice exercises based on chord progressions
 
 # Basic Usage
 
-Notes: Docker and Docker-compose not currently working -- can't get ```imager```, ```Python3```, ```Shiny```, and ```Rstudio``` working in the same image
+Clone Repo
+(sudo) bash start.sh
+go to localhost:3838 to view
 
 # Next Steps: 
 
