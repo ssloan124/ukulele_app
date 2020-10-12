@@ -25,5 +25,4 @@ go to localhost:3838 to view
 * https://jythonmusic.me/metronome/
 * https://rviews.rstudio.com/2018/04/17/reticulated-shiny/
 * https://www.infoworld.com/article/3340120/how-to-run-python-in-r.html
-
-
+* https://github.com/TomKellyGenetics/r-igraph-docker
